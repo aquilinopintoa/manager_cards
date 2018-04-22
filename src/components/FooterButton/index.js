@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import './index.css'
 
-class App extends Component {
+class FooterButton extends Component {
   render() {
     return (
       <div className="button">
@@ -14,4 +14,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default FooterButton

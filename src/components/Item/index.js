@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Card, CardMedia, CardText, CardTitle} from 'material-ui/Card';
 
-class App extends Component {
+class Item extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -35,4 +35,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default Item
