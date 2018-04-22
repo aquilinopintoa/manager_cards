@@ -1,8 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+import 'flexboxgrid/css/flexboxgrid.css'
+import './index.css'
+import App from './containers/App';
+
+ReactDOM.render(
+    <MuiThemeProvider>
+        <App />
+    </MuiThemeProvider>
+, document.getElementById('root'));
