@@ -28,7 +28,7 @@ class App extends Component {
             onError={this.handleErrorImage} />
         </CardMedia>
         <CardText>
-          {this.props.info.descripcion}
+          {this.props.info.description}
         </CardText>
       </Card>
     )
