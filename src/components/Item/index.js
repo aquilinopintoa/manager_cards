@@ -11,10 +11,9 @@ class Item extends Component {
     }
   }
 
-  handleErrorImage = () => {
-    this.setState({
-      url: "noImagen.png"
-    })
+  handleErrorImage = (e) => {
+    console.log(e)
+    this.refs.image.src = "noImagen.png"
   }
 
   onMouseOver = (e) => {
@@ -37,9 +36,10 @@ class Item extends Component {
         <CardMedia
           overlay={<CardTitle title={this.props.info.title}/>}
         >
-          <img 
+          <img
+            ref="image" 
             height={250} 
-            src={this.state.url} 
+            src={this.props.info.url || "noImagen.png"} 
             alt="" 
             onError={this.handleErrorImage} />
         </CardMedia>
