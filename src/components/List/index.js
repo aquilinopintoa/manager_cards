@@ -4,10 +4,7 @@ import './index.css'
 
 class List extends Component {
   getItems () {
-    console.log(this.props.items)
     const itemsOrdered = this.props.items.sort((iter, iter1) => {
-
-       console.log("sorting :: ", this.props.sorting, iter[this.props.sorting.attr], iter1[this.props.sorting.attr])
       if (this.props.sorting.order === 'asc') {
         return iter[this.props.sorting.attr] < iter1[this.props.sorting.attr] ? -1 : 1
       } else {
