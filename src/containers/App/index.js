@@ -12,8 +12,16 @@ import './index.css'
 class App extends Component {
   constructor(props) {
     super(props)
+
+    let cards =  []
+    // get cards from localstorage <pass to common files>
+    const ls = localStorage.getItem('cards')
+    if (ls) {
+      cards = JSON.parse(ls)
+    }
+
     this.state = {
-      items: [],
+      cards,
       openCreateCard: false,
       sort: {
         attr: 'createdAt',
@@ -31,10 +39,15 @@ class App extends Component {
   };
 
   handleCreateCard = (card) => {
-    this.state.items.push(card)
+    this.state.cards.push(card)
+
+    // update cards from localstorage <pass to common files>
+    localStorage.setItem('cards', JSON.stringify(this.state.cards))
+
     this.setState({
-      items: this.state.items
+      cards: this.state.cards
     })
+
     this.handleClose()
   }
 
@@ -50,7 +63,7 @@ class App extends Component {
           sort={this.state.sort}/>
 
         <List 
-          items={this.state.items} 
+          items={this.state.cards} 
           sorting={this.state.sort}/>
         
         <FooterButton onClick={this.handleOpen}>

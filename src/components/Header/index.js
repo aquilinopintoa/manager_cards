@@ -36,13 +36,13 @@ class Header extends Component {
         </div>
         <div>
           <RaisedButton
-              className="buttonOrder"
-              secondary={true}
-              onClick={this.handleChange}
-              icon={
-                this.props.sort.order !== 'asc' ? 
-                  <NavigationArrowUpward/> : <NavigationArrowDownward/>
-                }
+            className="buttonOrder"
+            secondary={true}
+            onClick={this.handleChange}
+            icon={
+              this.props.sort.order !== 'asc' ? 
+                <NavigationArrowUpward/> : <NavigationArrowDownward/>
+              }
             />
         </div>
       </div>
