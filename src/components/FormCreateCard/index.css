@@ -1,0 +1,21 @@
+.title {
+    text-align: center;
+    font-weight: bold;
+}
+
+.contentForm {
+    width: 80%;
+    max-width: 250px;
+    margin: auto
+}
+
+.input {
+    width: 100% !important;
+    max-width: 250px !important;
+}
+
+.buttonForm {
+    margin: 10px; 
+    display: flex;
+    justify-content: center;
+}
