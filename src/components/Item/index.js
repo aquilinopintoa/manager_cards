@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import {Card, CardMedia, CardText, CardTitle} from 'material-ui/Card';
+import {Card, CardMedia, CardText, CardTitle, CardActions} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
 
 class Item extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      url: this.props.info.url || "noImagen.png"
+      url: this.props.info.url || "noImagen.png",
+      over: false
     }
   }
 
@@ -15,9 +17,23 @@ class Item extends Component {
     })
   }
 
+  onMouseOver = (e) => {
+    e.preventDefault()
+    this.setState(
+      {over: true}
+    )
+  }
+
+  onMouseOut= (e) => {
+    e.preventDefault()
+    this.setState(
+      {over: false}
+    )
+  }
+
   render() {
     return (
-      <Card zDepth={5}>
+      <Card zDepth={5} onMouseOut={this.onMouseOut} onMouseOver={this.onMouseOver}>
         <CardMedia
           overlay={<CardTitle title={this.props.info.title}/>}
         >
@@ -30,6 +46,14 @@ class Item extends Component {
         <CardText>
           {this.props.info.description}
         </CardText>
+            <CardActions style={{height:40, visibility: this.state.over ? 'visible' : 'hidden'}}>
+              <FlatButton 
+                label="Editar" 
+                onClick={() => {this.props.handleAction('edit', this.props.info.id)}}/>
+              <FlatButton 
+                label="Eliminar" 
+                onClick={() => {this.props.handleAction('delete', this.props.info.id)}}/>
+            </CardActions>
       </Card>
     )
   }

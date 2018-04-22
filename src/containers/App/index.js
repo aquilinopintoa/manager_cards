@@ -6,6 +6,8 @@ import FormCreateCard from  '../../components/FormCreateCard'
 import Header from '../../components/Header'
 import List from '../../components/List'
 
+import {clone, remove} from 'lodash'
+
 
 import './index.css'
 
@@ -26,26 +28,56 @@ class App extends Component {
       sort: {
         attr: 'createdAt',
         order: 'asc'
-      }
+      },
+      action: '',
+      cardSelected: null
     }
   }
 
-  handleOpen = () => {
-    this.setState({openCreateCard: true});
+  handleOpen = (action, id = undefined) => {
+    let cardSelected = null 
+    
+    if (id !== undefined) {
+      cardSelected = this.state.cards.find((card) => {return card.id === id})
+    }
+
+    this.setState({
+      openCreateCard: true,
+      action,
+      cardSelected
+    });
   };
 
   handleClose = () => {
     this.setState({openCreateCard: false});
   };
 
-  handleCreateCard = (card) => {
-    this.state.cards.push(card)
+  handleUpdateCards = (action, card) => {
+    const prevCards = clone(this.state.cards)
+    switch(action){
+      case 'create':
+        card.id = prevCards.length
+        prevCards.push(card)
+        break
+      case 'edit':
+        // solucion no elegantee
+        const cardTarget = prevCards.find((iter) => iter.id === card.id) 
+        cardTarget.title = card.title
+        cardTarget.description = card.description
+        cardTarget.url = card.url
+        break
+      case 'delete':
+        remove(prevCards, (iter) => {return iter.id === card.id})
+        break
+      default:
+        console.log('action undefined')
+    }
 
     // update cards from localstorage <pass to common files>
-    localStorage.setItem('cards', JSON.stringify(this.state.cards))
+    localStorage.setItem('cards', JSON.stringify(prevCards))
 
     this.setState({
-      cards: this.state.cards
+      cards: prevCards
     })
 
     this.handleClose()
@@ -53,6 +85,19 @@ class App extends Component {
 
   handleChangeSorting = (sort) => {
     this.setState({sort})
+  }
+
+  handleActionCard = (action, id) => {
+    switch(action){
+      case 'edit':
+        this.handleOpen('edit', id)
+        break
+      case 'delete':
+        this.handleUpdateCards('delete', {id})
+        break
+      default: 
+        console.log('action undefined')
+    }
   }
 
   render() {
@@ -64,9 +109,10 @@ class App extends Component {
 
         <List 
           items={this.state.cards} 
-          sorting={this.state.sort}/>
+          sorting={this.state.sort}
+          handleAction={this.handleActionCard}/>
         
-        <FooterButton onClick={this.handleOpen}>
+        <FooterButton action="create" handleAction={this.handleOpen}>
           <ContentAdd className="floatButton"/>
         </FooterButton>
 
@@ -77,7 +123,10 @@ class App extends Component {
           onRequestClose={this.handleClose}
           autoScrollBodyContent
         >
-          <FormCreateCard onSubmit={this.handleCreateCard}/>
+          <FormCreateCard 
+            cardSelected={this.state.cardSelected} 
+            action={this.state.action} 
+            onSubmit={this.handleUpdateCards}/>
         </Dialog>
       </div>
     )
