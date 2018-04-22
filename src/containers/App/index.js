@@ -15,6 +15,10 @@ class App extends Component {
     this.state = {
       items: [],
       openCreateCard: false,
+      sort: {
+        attr: 'createdAt',
+        order: 'asc'
+      }
     }
   }
 
@@ -34,6 +38,10 @@ class App extends Component {
     this.handleClose()
   }
 
+  handleChangeSorting = (sort) => {
+    this.setState({sort})
+  }
+
   render() {
     return (
       <div>
@@ -41,7 +49,9 @@ class App extends Component {
           handleChange={this.handleChangeSorting}
           sort={this.state.sort}/>
 
-        <List items={this.state.items} sorting={this.state.sort}/>
+        <List 
+          items={this.state.items} 
+          sorting={this.state.sort}/>
         
         <FooterButton onClick={this.handleOpen}>
           <ContentAdd />

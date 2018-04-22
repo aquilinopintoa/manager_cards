@@ -9,3 +9,12 @@
     justify-content: center;
     z-index: 10;
 }
+
+.appBar div {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.buttonOrder {
+    min-width: 50px !important;
+}
