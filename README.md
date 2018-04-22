@@ -2,7 +2,8 @@ Prueba Frontend React
 
 ## Requerimientos faltantes
 
-funcionalmente completo
+1) editar cards
+2) eliminar cards
 
 ## Mejoras 
 
