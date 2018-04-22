@@ -24,6 +24,7 @@ class App extends Component {
 
     this.state = {
       cards,
+      count: cards.length,
       openCreateCard: false,
       sort: {
         attr: 'createdAt',
@@ -36,7 +37,6 @@ class App extends Component {
 
   handleOpen = (action, id = undefined) => {
     let cardSelected = null 
-    
     if (id !== undefined) {
       cardSelected = this.state.cards.find((card) => {return card.id === id})
     }
@@ -54,9 +54,11 @@ class App extends Component {
 
   handleUpdateCards = (action, card) => {
     const prevCards = clone(this.state.cards)
+    let count = this.state.count
+
     switch(action){
       case 'create':
-        card.id = prevCards.length
+        card.id = ++count
         prevCards.push(card)
         break
       case 'edit':
@@ -77,7 +79,8 @@ class App extends Component {
     localStorage.setItem('cards', JSON.stringify(prevCards))
 
     this.setState({
-      cards: prevCards
+      cards: prevCards,
+      count
     })
 
     this.handleClose()
