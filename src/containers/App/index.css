@@ -1,3 +1,7 @@
 .list {
     padding-top: 50px;
 }
+
+.contentModal{
+    max-width: 400px !important;
+}
