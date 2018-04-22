@@ -67,7 +67,7 @@ class App extends Component {
           sorting={this.state.sort}/>
         
         <FooterButton onClick={this.handleOpen}>
-          <ContentAdd />
+          <ContentAdd className="floatButton"/>
         </FooterButton>
 
         <Dialog

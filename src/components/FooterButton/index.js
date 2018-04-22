@@ -6,7 +6,7 @@ class FooterButton extends Component {
   render() {
     return (
       <div className="button">
-        <FloatingActionButton {...this.props}>
+        <FloatingActionButton backgroundColor="red" {...this.props}>
           {this.props.children}
         </FloatingActionButton>
       </div>

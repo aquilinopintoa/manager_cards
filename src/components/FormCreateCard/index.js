@@ -89,9 +89,10 @@ class FormCreateCard extends Component {
             />
             <div className="buttonForm">
               <RaisedButton 
-                label="Añadir" 
-                primary={true}
-                onClick={(e) => this.onSubmit(e)}
+                label="Añadir"
+                labelColor="white"
+                backgroundColor="red"
+                onClick={this.onSubmit}
               />
             </div>
           </div>
