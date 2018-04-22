@@ -16,15 +16,18 @@ class App extends Component {
     super(props)
 
     let cards =  []
+    let count = 0
     // get cards from localstorage <pass to common files>
     const ls = localStorage.getItem('cards')
-    if (ls) {
+    const lsCount = localStorage.getItem('count')
+    if (ls && lsCount) {
       cards = JSON.parse(ls)
+      count = parseInt(lsCount, 10)
     }
-
+    
     this.state = {
       cards,
-      count: cards.length,
+      count,
       openCreateCard: false,
       sort: {
         attr: 'createdAt',
@@ -77,6 +80,7 @@ class App extends Component {
 
     // update cards from localstorage <pass to common files>
     localStorage.setItem('cards', JSON.stringify(prevCards))
+    localStorage.setItem('count', count)
 
     this.setState({
       cards: prevCards,
