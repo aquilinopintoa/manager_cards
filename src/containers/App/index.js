@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import Dialog from 'material-ui/Dialog';
 import FooterButton from '../../components/FooterButton'
-import FormCreateCard from  '../../components/FormCreateCard'
+import FormCard from  '../../components/FormCard'
 import Header from '../../components/Header'
 import List from '../../components/List'
 
@@ -123,7 +123,7 @@ class App extends Component {
           onRequestClose={this.handleClose}
           autoScrollBodyContent
         >
-          <FormCreateCard 
+          <FormCard 
             cardSelected={this.state.cardSelected} 
             action={this.state.action} 
             onSubmit={this.handleUpdateCards}/>
