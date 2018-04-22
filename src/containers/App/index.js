@@ -9,44 +9,11 @@ import List from '../../components/List'
 
 import './index.css'
 
-const testData = [
-  {
-    title: "titulo", 
-    description: "descripcion", 
-    url: "https://www.venezuelatuya.com/wallpapers/imagenes/montanasatardecer1.jpg", 
-    createdAt: new Date()
-  },
-  {
-    title: "titulo", 
-    description: "descripcion", 
-    url: "https://www.venezuelatuya.com/wallpapers/imagenes/montanasatardecer1.jpg", 
-    createdAt: new Date()
-  },
-  {
-    title: "titulo", 
-    description: "descripcion", 
-    url: "https://www.venezuelatuya.com/wallpapers/imagenes/montanasatardecer1.jpg", 
-    createdAt: new Date()
-  },
-  {
-    title: "titulo", 
-    description: "descripcion", 
-    url: "https://www.venezuelatuya.com/wallpapers/imagenes/montanasatardecer1.jpg", 
-    createdAt: new Date()
-  },
-  {
-    title: "titulo", 
-    description: "descripcion", 
-    url: "https://www.venezuelatuya.com/wallpapers/imagenes/montanasatardecer1.jpg", 
-    createdAt: new Date()
-  }
-]
-
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      items: testData,
+      items: [],
       openCreateCard: false,
     }
   }
