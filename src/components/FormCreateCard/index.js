@@ -53,6 +53,7 @@ class FormCreateCard extends Component {
       this.setState(statePrev)
       return
     }
+
     statePrev.cardData.createdAt = new Date()
     this.props.onSubmit(statePrev.cardData)
   }
@@ -95,7 +96,6 @@ class FormCreateCard extends Component {
             </div>
           </div>
         </div>
-        
       </div>
     )
   }
