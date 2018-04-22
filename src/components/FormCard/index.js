@@ -12,7 +12,7 @@ const validations = {
   url: []
 }
 
-class FormCreateCard extends Component {
+class FormCard extends Component {
 
   constructor(props) {
     super(props)
@@ -107,4 +107,4 @@ class FormCreateCard extends Component {
   }
 }
 
-export default FormCreateCard
+export default FormCard

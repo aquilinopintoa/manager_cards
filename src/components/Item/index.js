@@ -46,12 +46,14 @@ class Item extends Component {
         <CardText>
           {this.props.info.description}
         </CardText>
-            <CardActions style={{height:40, visibility: this.state.over ? 'visible' : 'hidden'}}>
+            <CardActions style={{display: 'flex', justifyContent:'center', height:40, visibility: this.state.over ? 'visible' : 'hidden'}}>
               <FlatButton 
                 label="Editar" 
+                primary
                 onClick={() => {this.props.handleAction('edit', this.props.info.id)}}/>
               <FlatButton 
                 label="Eliminar" 
+                secondary
                 onClick={() => {this.props.handleAction('delete', this.props.info.id)}}/>
             </CardActions>
       </Card>
