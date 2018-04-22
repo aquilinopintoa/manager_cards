@@ -16,12 +16,15 @@ class FormCreateCard extends Component {
 
   constructor(props) {
     super(props)
+    let cardData = props.cardSelected || {}
+
     this.state = { 
       errors: {},
       cardData: { 
         title: '',
         description: '',
-        url: ''
+        url: '',
+        ...cardData
       }
     }
   }
@@ -55,7 +58,7 @@ class FormCreateCard extends Component {
     }
 
     statePrev.cardData.createdAt = new Date()
-    this.props.onSubmit(statePrev.cardData)
+    this.props.onSubmit(this.props.action, statePrev.cardData)
   }
 
   render() {
@@ -69,6 +72,7 @@ class FormCreateCard extends Component {
             <TextField
               className="input"
               hintText="Titulo"
+              defaultValue={this.state.cardData.title}
               errorText={this.state.errors.title}
               floatingLabelText="Titulo"
               onChange={(event, value) => this.save(value,"title")}
@@ -76,6 +80,7 @@ class FormCreateCard extends Component {
             <TextField
               className="input"
               hintText="Descripcion"
+              defaultValue={this.state.cardData.description}
               floatingLabelText="Descripcion"
               errorText={this.state.errors.description}
               onChange={(event, value) => this.save(value,"description")}
@@ -83,14 +88,14 @@ class FormCreateCard extends Component {
             <TextField
               className="input"
               hintText="Url"
+              defaultValue={this.state.cardData.url}
               floatingLabelText="Url"
               errorText={this.state.errors.url}
               onChange={(event, value) => this.save(value,"url")}
             />
             <div className="buttonForm">
               <RaisedButton 
-                label="Añadir"
-                labelColor="white"
+                label={this.props.action === 'create' ? "Añadir" : "Editar"}
                 backgroundColor="red"
                 onClick={this.onSubmit}
               />
